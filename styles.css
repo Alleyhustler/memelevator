@@ -1,0 +1,339 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden; /* Prevent default scrollbars */
+}
+
+#container {
+    height: 100vh; /* Full viewport height */
+    width: 100%;
+    position: relative;
+}
+
+#elevator {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100vh; /* Full viewport height */
+    transition: transform 0.5s ease-in-out;
+}
+
+.floor {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+    font-size: 2em;
+    color: white;
+    line-height: 100vh;
+    background-size: cover;
+    background-position: center;
+}
+
+#floor1 {
+    background-image: url('images/cielo4.png');
+    top: 0;
+}
+
+#floor2 {
+    background-image: url('images/cielo3.png');
+    top: 100vh;
+}
+
+#floor3 {
+    background-image: url('images/cielo2.png');
+    top: 200vh;
+}
+
+#floor4 {
+    background-image: url('images/pattern-with-clouds-blue-background.jpg');
+    top: 300vh;
+}
+
+.floor img {
+    position: absolute;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* Adjust based on your layout needs */
+}
+
+/* Floor 1 Images */
+#floor1 img:nth-of-type(1) {
+    top: 10%; /* Adjust position */
+    left: 39%; /* Adjust position */
+}
+
+#floor1 img:nth-of-type(2) {
+    top: 70%; /* Adjust position */
+    left: 40%; /* Adjust position */
+}
+
+#floor1 img:nth-of-type(3) {
+    top: 50%; /* Adjust position */
+    left: 20%; /* Adjust position */
+    transform: translate(-50%, -50%); /* Centered */
+}
+
+#floor1 img:nth-of-type(4) {
+    top: 10%; /* Adjust position */
+    left: 70%; /* Adjust position */
+}
+
+/* Floor 2 Images */
+#floor2 img:nth-of-type(1) {
+    top: 10%; /* Adjust position */
+    left: 20%; /* Adjust position */
+}
+
+#floor2 img:nth-of-type(2) {
+    top: 50%; /* Adjust position */
+    left: 40%; /* Adjust position */
+}
+
+#floor2 img:nth-of-type(3) {
+    top: 50%; /* Adjust position */
+    left: 20%; /* Adjust position */
+}
+
+#floor2 img:nth-of-type(4) {
+    top: 5%; /* Adjust position */
+    left: 40%; /* Adjust position */
+}
+
+/* Floor 3 Images */
+#floor3 img:nth-of-type(1) {
+    top: 15%; /* Adjust position */
+    left: 15%; /* Adjust position */
+}
+
+#floor3 img:nth-of-type(2) {
+    top: 35%; /* Adjust position */
+    left: 35%; /* Adjust position */
+}
+
+/* Floor 4 Images */
+#floor4 img:nth-of-type(1) {
+    top: 40%; /* Adjust position */
+    left: 50%; /* Adjust position */
+}
+
+#floor4 img:nth-of-type(2) {
+    top: 50%; /* Adjust position */
+    left: 10%; /* Adjust position */
+}
+
+#controls {
+    position: fixed;
+    bottom: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    z-index: 10; /* Ensure controls are above other content */
+}
+
+.control-button {
+    background: linear-gradient(135deg, #ff4081, #ffeb3b); /* Gradient background */
+    color: white;
+    border: 2px solid transparent;
+    border-radius: 50%;
+    padding: 15px 25px;
+    font-size: 2em;
+    font-family: 'FantasyFont', cursive; /* Match the title font */
+    cursor: pointer;
+    margin: 0 10px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.control-button:hover {
+    background: linear-gradient(135deg, #ff80ab, #fff59d); /* Slightly different gradient for hover */
+    transform: scale(1.1); /* Slightly enlarge on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+.control-button:focus {
+    outline: none; /* Remove default focus outline */
+}
+
+/* Floating animation */
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px); /* Adjust the vertical movement */
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* Apply the animation to each mascot */
+.floor-mascot {
+    position: absolute;
+    width: 300px; /* Adjust size as needed */
+    height: auto;
+    animation: float 3s ease-in-out infinite; /* Apply the animation */
+}
+
+/* Positioning mascots on each floor */
+#floor1 .floor-mascot {
+    bottom: 10%; /* Adjust as needed */
+    left: 10%;   /* Adjust as needed */
+}
+
+#floor2 .floor-mascot {
+    bottom: 10%; /* Adjust as needed */
+    left: 30%;   /* Adjust as needed */
+}
+
+#floor3 .floor-mascot {
+    bottom: 10%; /* Adjust as needed */
+    left: 50%;   /* Adjust as needed */
+}
+
+#floor4 .floor-mascot {
+    bottom: 70%; /* Adjust as needed */
+    left: 30%;   /* Adjust as needed */
+}
+
+.vignette {
+    position: absolute;
+    width: 200px; /* Adjust width as needed */
+    height: 200px; /* Adjust height as needed */
+    background-size: contain; /* Scale the background image to fit within the container */
+    background-repeat: no-repeat;
+    text-align: center;
+    line-height: 50px; /* Center text vertically */
+    font-size: 0.8em; /* Adjust font size if needed */
+    color: black; /* Change text color if needed */
+    padding: 5px;
+    border-radius: 50%; /* Create a cloud-like shape */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Optional: adds shadow for depth */
+}
+
+/* Unique background images for each vignette */
+#vignette1 {
+    background-image: url('images/ua.png'); /* Image for Floor 1 */
+    bottom: 5%; /* Adjust as needed */
+    left: 12%;   /* Adjust as needed */
+}
+
+#vignette2 {
+    background-image: url('images/what.png'); /* Image for Floor 2 */
+    bottom: 5%; /* Adjust as needed */
+    left: 30%;   /* Adjust as needed */
+}
+
+#vignette3 {
+    background-image: url('images/here.png'); /* Image for Floor 3 */
+    bottom: 5%; /* Adjust as needed */
+    left: 50%;   /* Adjust as needed */
+}
+
+#vignette4 {
+    background-image: url('images/hey.png'); /* Image for Floor 4 */
+    bottom: 60%; /* Adjust as needed */
+    left: 28%;   /* Adjust as needed */
+}
+
+/* Title placeholder styling */
+#title-placeholder {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'MedievalSharp', cursive;
+    font-size: 4em;
+    color: #ff0; /* Bright yellow */
+    text-shadow: 
+        0 0 5px #ff0, 
+        0 0 10px #ff0, 
+        0 0 15px #f0f, 
+        0 0 20px #f0f, 
+        0 0 25px #f0f, 
+        0 0 30px #f0f, 
+        0 0 35px #f0f; /* Glowing effect */
+    animation: glow 1.5s ease-in-out infinite;
+}
+
+@keyframes glow {
+    0% { text-shadow: 0 0 5px #ff0, 0 0 10px #ff0, 0 0 15px #f0f, 0 0 20px #f0f, 0 0 25px #f0f, 0 0 30px #f0f, 0 0 35px #f0f; }
+    50% { text-shadow: 0 0 10px #ff0, 0 0 20px #ff0, 0 0 30px #f0f, 0 0 40px #f0f, 0 0 50px #f0f, 0 0 60px #f0f, 0 0 70px #f0f; }
+    100% { text-shadow: 0 0 5px #ff0, 0 0 10px #ff0, 0 0 15px #f0f, 0 0 20px #f0f, 0 0 25px #f0f, 0 0 30px #f0f, 0 0 35px #f0f; }
+}
+
+/* Flying Image Styling */
+#flying-image {
+    position: absolute;
+    width: 120px; /* Adjust size as needed */
+    height: 120px; /* Adjust size as needed */
+    background-image: url('images/A.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    animation: flyAround 20s linear infinite;
+}
+
+@keyframes flyAround {
+    0% {
+        transform: translate(0, 0);
+    }
+    10% {
+        transform: translate(50vw, 20vh);
+    }
+    20% {
+        transform: translate(30vw, 50vh);
+    }
+    30% {
+        transform: translate(70vw, 30vh);
+    }
+    40% {
+        transform: translate(40vw, 70vh);
+    }
+    50% {
+        transform: translate(80vw, 40vh);
+    }
+    60% {
+        transform: translate(20vw, 80vh);
+    }
+    70% {
+        transform: translate(60vw, 20vh);
+    }
+    80% {
+        transform: translate(30vw, 60vh);
+    }
+    90% {
+        transform: translate(70vw, 10vh);
+    }
+    100% {
+        transform: translate(0, 0);
+    }
+}
+
+/* Social Media Icons in Floor 4 */
+#social-media {
+    position: absolute;
+    top: 20px; /* Adjust as needed */
+    right: 20px; /* Ensure it is 20px from the right */
+    display: flex;
+    gap: 15px;
+    z-index: 10; /* Ensure it's above other content */
+}
+
+.social-icon {
+    color: white;
+    padding: 10px;
+    font-size: 2em;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.social-icon:hover {
+    background: rgba(0, 0, 0, 0.8);
+    transform: scale(1.2);
+}
+
+.social-icon i {
+    margin: 0;
+}
